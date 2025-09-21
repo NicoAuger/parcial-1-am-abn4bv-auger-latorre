@@ -1,0 +1,19 @@
+# Gradle / Builds
+.gradle/
+**/build/
+.cxx/
+
+# Android Studio
+.idea/
+*.iml
+
+# SDK local
+local.properties
+
+# Logs / claves
+*.log
+*.jks
+*.keystore
+
+# Capturas / outputs locales
+captures/
