@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">Mis Gastos Diarios</string>
+    <string name="hint_budget">Presupuesto inicial (ej: 100000)</string>
+    <string name="btn_set_budget">Fijar</string>
+    <string name="summary_budget">Presupuesto: $0</string>
+    <string name="summary_spent">Gastado: $0</string>
+    <string name="summary_remaining">Restante: $0</string>
+    <string name="hint_amount">Monto</string>
+    <string name="hint_note">Nota (opcional)</string>
+    <string name="btn_add">Agregar</string>
+
+    <string-array name="categories">
+        <item>Comida</item>
+        <item>Transporte</item>
+        <item>Hogar</item>
+        <item>Ocio</item>
+        <item>Salud</item>
+        <item>Educación</item>
+        <item>Otros</item>
+    </string-array>
 </resources>
