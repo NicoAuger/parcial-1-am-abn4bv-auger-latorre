@@ -1,0 +1,11 @@
+<resources>
+    <string-array name="categories">
+        <item>Comida</item>
+        <item>Transporte</item>
+        <item>Hogar</item>
+        <item>Ocio</item>
+        <item>Salud</item>
+        <item>Educación</item>
+        <item>Otros</item>
+    </string-array>
+</resources>
