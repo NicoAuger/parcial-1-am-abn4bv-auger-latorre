@@ -4,3 +4,11 @@ plugins {
     id 'com.android.application' version '8.4.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.9.24' apply false
 }
+
+// Fuerza jvmTarget=17 para todas las tareas Kotlin de todos los módulos
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+

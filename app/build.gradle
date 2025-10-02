@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace "com.nauger.misgastosdiarios"   // <-- igual a tu package
+    namespace "com.nauger.misgastosdiarios"
     compileSdk 34
 
     defaultConfig {
@@ -21,6 +21,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    // === ALINEAR JAVA Y KOTLIN A 17 ===
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+// Por si algún plugin deja Java en 1.8, forzamos 17 en todas las tareas Java
+tasks.withType(JavaCompile).configureEach {
+    sourceCompatibility = JavaVersion.VERSION_17.toString()
+    targetCompatibility = JavaVersion.VERSION_17.toString()
 }
 
 dependencies {

@@ -10,4 +10,7 @@
     <string name="hint_amount">Monto</string>
     <string name="hint_note">Nota (opcional)</string>
     <string name="btn_add">Agregar</string>
+    <string name="chart_title">Resumen por categoría (% del presupuesto)</string>
+    <string name="cd_fab_actions">Acciones</string>
+    <string name="cd_expenses_scroll">Lista de gastos</string>
 </resources>
