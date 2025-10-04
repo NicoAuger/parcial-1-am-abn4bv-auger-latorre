@@ -1,16 +1,55 @@
 <resources>
+
+    <!-- Nombre de la aplicación -->
     <string name="app_name">Mis Gastos Diarios</string>
 
-    <!-- Textos de la UI -->
-    <string name="hint_budget">Presupuesto inicial (ej: 100000)</string>
-    <string name="btn_set_budget">Fijar</string>
-    <string name="summary_budget">Presupuesto: $0</string>
-    <string name="summary_spent">Gastado: $0</string>
-    <string name="summary_remaining">Restante: $0</string>
-    <string name="hint_amount">Monto</string>
-    <string name="hint_note">Nota (opcional)</string>
-    <string name="btn_add">Agregar</string>
-    <string name="chart_title">Resumen por categoría (% del presupuesto)</string>
-    <string name="cd_fab_actions">Acciones</string>
+    <!-- ──────────────── ACCESIBILIDAD ──────────────── -->
+    <!-- Mantengo descripciones para lectores de pantalla -->
+    <string name="cd_delete_expense">Eliminar gasto</string>
     <string name="cd_expenses_scroll">Lista de gastos</string>
+    <string name="cd_fab_actions">Acciones</string>
+
+    <!-- ──────────────── ACCIONES Y MENSAJES DE USUARIO ──────────────── -->
+    <!-- Centralizo mensajes de feedback para reusarlos desde el código -->
+    <string name="msg_budget_set">Presupuesto fijado</string>
+    <string name="msg_deleted">Gasto eliminado</string>
+    <string name="msg_expenses_cleared">Gastos limpiados</string>
+
+    <!-- ──────────────── BOTONES ──────────────── -->
+    <string name="btn_add">Agregar</string>
+    <string name="btn_set_budget">Fijar</string>
+
+    <!-- ──────────────── CHART / GRÁFICO ──────────────── -->
+    <!-- Mantengo formato con placeholders para datos dinámicos -->
+    <string name="chart_title">Resumen por categoría (% del presupuesto)</string>
+    <string name="fmt_chart_line">%1$s — %2$s (%3$s)</string>
+    <string name="hint_chart_needs_budget">Fijá un presupuesto para ver porcentajes</string>
+    <string name="hint_chart_no_expenses">Aún no hay gastos para graficar</string>
+
+    <!-- ──────────────── ERRORES Y VALIDACIONES ──────────────── -->
+    <!-- Me aseguro de mantener tono consistente en todos los errores -->
+    <string name="err_amount_invalid">Monto inválido</string>
+    <string name="err_budget_invalid">Ingresá un presupuesto válido</string>
+
+    <!-- ──────────────── FAB MENU ──────────────── -->
+    <string name="menu_clear_expenses">Limpiar gastos</string>
+    <string name="menu_recalc_summary">Recalcular resumen</string>
+
+    <!-- ──────────────── HINTS DE CAMPOS DE FORMULARIO ──────────────── -->
+    <string name="hint_amount">Monto</string>
+    <string name="hint_budget">Presupuesto inicial (ej: 100000)</string>
+    <string name="hint_note">Nota (opcional)</string>
+
+    <!-- ──────────────── LABELS DE RESUMEN ──────────────── -->
+    <!-- Prefiero usar placeholders (%1$s) para valores dinámicos -->
+    <string name="lbl_budget">Presupuesto: %1$s</string>
+    <string name="lbl_remaining">Restante: %1$s</string>
+    <string name="lbl_spent">Gastado: %1$s</string>
+
+    <!-- ──────────────── TEXTOS ESTÁTICOS DE UI ──────────────── -->
+    <!-- Dejo textos que sirven como valores por defecto o labels fijos -->
+    <string name="summary_budget">Presupuesto: $0</string>
+    <string name="summary_remaining">Restante: $0</string>
+    <string name="summary_spent">Gastado: $0</string>
+
 </resources>

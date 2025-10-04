@@ -9,7 +9,7 @@
     tools:context=".MainActivity"
     android:importantForAutofill="no">
 
-<!-- Header -->
+    <!-- Header -->
     <TextView
         android:id="@+id/tvHeader"
         android:layout_width="0dp"
@@ -40,7 +40,7 @@
         android:importantForAutofill="no"
         android:autofillHints=""/>
 
-    <!-- Botón Fijar (MaterialButton sin style raro) -->
+    <!-- Botón Fijar -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSetBudget"
         android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:background="#1A000000"
+        android:background="@color/summary_box_bg"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/etBudget"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,6 @@
             android:text="@string/summary_remaining"
             android:gravity="end"
             android:textColor="?attr/colorOnSurface" />
-
     </LinearLayout>
 
     <!-- Formulario horizontal -->
@@ -121,7 +120,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="6dp"
-            android:minHeight="48dp"/>
+            android:minHeight="48dp"
+            android:importantForAutofill="no"  />
 
         <EditText
             android:id="@+id/etNote"
@@ -136,7 +136,7 @@
             android:autofillHints=""
             android:inputType="textCapSentences|text" />
 
-        <!-- Botón Agregar (MaterialButton simple) -->
+        <!-- Botón Agregar -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
@@ -168,28 +168,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Lista dentro de ScrollView -->
-    <ScrollView
-        android:id="@+id/scroll"
+    <!-- Lista de gastos con RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerExpenses"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fillViewport="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="72dp"
+        android:clipToPadding="false"
+        android:paddingBottom="72dp"
         app:layout_constraintTop_toBottomOf="@id/chartContainer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/cd_expenses_scroll" >
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/containerExpenses"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
-    <!-- FAB (sin app:tint para evitar conflictos) -->
+    <!-- FAB -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabMenu"
         android:layout_width="wrap_content"

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="48dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp"
+    android:background="?attr/selectableItemBackground"> <!-- Prefiero ripple en toda la fila -->
+
+    <!-- Decido dividir en izquierda (categoría • nota) y derecha (monto + borrar). -->
+<TextView
+android:id="@+id/tvLeft"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:layout_weight="1"
+android:maxLines="1"
+android:ellipsize="end"
+android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+<TextView
+android:id="@+id/tvRight"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginEnd="8dp"
+android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+<ImageButton
+android:id="@+id/btnDelete"
+android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:contentDescription="@string/cd_delete_expense"
+    android:src="@android:drawable/ic_menu_delete"
+    android:background="?attr/selectableItemBackgroundBorderless" />
+    </LinearLayout>

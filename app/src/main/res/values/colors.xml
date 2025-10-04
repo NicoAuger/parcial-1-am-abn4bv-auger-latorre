@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Elijo centralizar los colores “custom” para no hardcodear en layouts/código -->
+
+    <!-- Caja de resumen (fondo semitransparente). Mantengo el valor original. -->
+    <color name="summary_box_bg">#1A000000</color>
+
+    <!-- Estados/feedback (puedo usarlo para restante negativo o errores menores de UI) -->
+    <color name="expense_negative">#D32F2F</color>   <!-- Rojo material-ish -->
+    <color name="expense_neutral">#424242</color>    <!-- Gris neutro para textos -->
+
+    <!-- Paleta por categoría (si mañana dejamos de usar android.R.* en el gráfico, ya tengo estos) -->
+    <color name="cat_food">#FB8C00</color>        <!-- Comida -->
+    <color name="cat_transport">#1976D2</color>   <!-- Transporte -->
+    <color name="cat_leisure">#7B1FA2</color>     <!-- Ocio -->
+    <color name="cat_health">#C62828</color>      <!-- Salud -->
+    <color name="cat_education">#1E88E5</color>   <!-- Educación -->
+    <color name="cat_other">#757575</color>       <!-- Otros -->
+
+</resources>

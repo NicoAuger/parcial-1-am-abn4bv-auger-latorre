@@ -16,13 +16,18 @@ android {
     }
 
     buildTypes {
+        debug {
+            // Decido dejar minify off en debug para depurar cómodo
+            minifyEnabled false
+        }
         release {
+            // En un parcial no necesito ofuscar; dejo reglas por si lo activaran más adelante
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
-    // === ALINEAR JAVA Y KOTLIN A 17 ===
+    // Alineo Java/Kotlin a 17 (coherente con el Project)
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -30,9 +35,12 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+
+    // (Opcional) Si quieren usar binding de vistas con RecyclerView:
+    // buildFeatures { viewBinding true }
 }
 
-// Por si algún plugin deja Java en 1.8, forzamos 17 en todas las tareas Java
+// Esto es defensivo; si algún plugin insiste en 1.8, fuerzo 17.
 tasks.withType(JavaCompile).configureEach {
     sourceCompatibility = JavaVersion.VERSION_17.toString()
     targetCompatibility = JavaVersion.VERSION_17.toString()
@@ -41,6 +49,15 @@ tasks.withType(JavaCompile).configureEach {
 dependencies {
     implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'androidx.appcompat:appcompat:1.7.0'
+
+    // Material: elijo mantener la dependencia explícita y quitar libs.material para evitar duplicados
     implementation 'com.google.android.material:material:1.12.0'
+    // implementation libs.material  // <-- La saco para no duplicar
+
+    // ConstraintLayout: tu versión compila perfecto; no toco.
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // (Opcional) Si quisieras la última estable, es 2.2.0, pero no es necesario cambiarla para el parcial.
+
+    // RecyclerView: lo agrego porque lo usa MainActivity/ExpenseAdapter
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
 }
