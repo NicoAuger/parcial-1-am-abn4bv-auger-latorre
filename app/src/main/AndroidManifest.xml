@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nauger.misgastosdiarios">
 
+    <!-- Define la configuración base del proyecto y su identificador de paquete -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,9 +16,12 @@
         android:theme="@style/Theme.Material3.DayNight.NoActionBar"
         android:usesCleartextTraffic="false">
 
+        <!-- Actividad principal que se ejecuta al iniciar la aplicación -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
+            <!-- Indica que esta actividad es el punto de entrada de la app y aparece en el launcher -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,4 +29,5 @@
         </activity>
 
     </application>
+
 </manifest>

@@ -11,46 +11,67 @@ import androidx.recyclerview.widget.RecyclerView
 import java.text.NumberFormat
 import java.util.Locale
 
+/*
+   Adaptador que gestiona la lista de gastos en el RecyclerView.
+   Usa ListAdapter y DiffUtil para optimizar actualizaciones de la lista.
+   Recibe una función de callback para eliminar ítems desde la interfaz.
+*/
 class ExpenseAdapter(
     private val onDelete: (Expense) -> Unit
 ) : ListAdapter<Expense, ExpenseAdapter.VH>(DIFF) {
 
-    // Decido usar contenido para areItemsTheSame porque la Activity hace submitList(...) creando nuevas instancias.
-    // Si más adelante tuviéramos un id estable, lo usaría acá.
+    /*
+       Implementa la comparación entre elementos para que DiffUtil determine qué cambió.
+       Se usa igualdad estructural de la data class porque no hay ID único definido.
+    */
     companion object {
         private val DIFF = object : DiffUtil.ItemCallback<Expense>() {
             override fun areItemsTheSame(oldItem: Expense, newItem: Expense): Boolean {
-                // Uso igualdad estructural (data class) para considerar "el mismo ítem" si todo su contenido coincide.
-                // En un caso real, preferiría un ID único y comparar ese ID.
                 return oldItem == newItem
             }
+
             override fun areContentsTheSame(oldItem: Expense, newItem: Expense): Boolean {
                 return oldItem == newItem
             }
         }
     }
 
-    // (Opcional) IDs estables para mejor reuso/animaciones
+    /*
+       Habilita IDs estables para mejorar el rendimiento y las animaciones.
+    */
     init {
         setHasStableIds(true)
     }
 
+    /*
+       Genera un ID único para cada elemento basándose en su contenido.
+       Esto permite mantener consistencia visual al actualizar la lista.
+    */
     override fun getItemId(position: Int): Long {
-        // Elijo un ID derivado del contenido para que sea estable entre diffs.
-        // Si luego agregamos 'id: Long' al modelo, devolvería ese id directamente.
         return getItem(position).hashCode().toLong()
     }
 
+    /*
+       Infla el layout de cada ítem de gasto (item_expense.xml)
+       y crea un ViewHolder para administrarlo.
+    */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_expense, parent, false)
         return VH(v, onDelete)
     }
 
+    /*
+       Asocia los datos del gasto actual con las vistas del ViewHolder.
+    */
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.bind(getItem(position))
     }
 
+    /*
+       ViewHolder que representa visualmente un gasto en la lista.
+       Administra las vistas internas y el evento de eliminación.
+    */
     class VH(
         itemView: View,
         private val onDelete: (Expense) -> Unit
@@ -60,21 +81,26 @@ class ExpenseAdapter(
         private val tvRight: TextView = itemView.findViewById(R.id.tvRight)
         private val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
 
-        // Prefiero instanciar el formateador una vez por ViewHolder con Locale es-AR para consistencia visual.
+        /*
+           Formateador de moneda configurado para pesos argentinos (ARS).
+           Se crea una sola vez por ViewHolder.
+        */
         private val ars: NumberFormat = NumberFormat.getCurrencyInstance(Locale("es", "AR"))
 
+        /*
+           Muestra los datos del gasto en el ítem correspondiente.
+           Incluye la categoría, nota (si existe) y monto formateado.
+        */
         fun bind(e: Expense) {
-            // Decido mostrar "Categoría • Nota" si hay nota; sino solo categoría.
             tvLeft.text = if (e.note.isBlank()) e.category else "${e.category} • ${e.note}"
-
-            // Elijo formatear el monto como ARS para que coincida con el resumen de la pantalla.
             tvRight.text = ars.format(e.amount)
 
-            // Si el XML no lo define, doy una contentDescription básica por accesibilidad.
+            // Asigna descripción accesible si no está definida en el XML.
             if (btnDelete.contentDescription == null) {
                 btnDelete.contentDescription = itemView.context.getString(R.string.cd_delete_expense)
             }
 
+            // Acción de eliminar cuando se presiona el botón.
             btnDelete.setOnClickListener { onDelete(e) }
         }
     }
